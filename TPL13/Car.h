@@ -11,6 +11,9 @@ private:
 
 
 public:
+	Car() {
+
+	}
 	void display() override {
 		std::cout << "Car\n";
 		std::cout << "bra \t:\t" << brand << '\n';
