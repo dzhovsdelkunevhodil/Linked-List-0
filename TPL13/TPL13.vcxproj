@@ -141,6 +141,12 @@
   <ItemGroup>
     <ClCompile Include="TPL13.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="Factory.h" />
+    <ClInclude Include="Furniture.h" />
+    <ClInclude Include="Worker.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
