@@ -6,7 +6,7 @@ class Factory {		//абстрактный базовый класс
 public:
 	virtual void display() = 0;
 
-
+	virtual ~Factory() {};
 
 private:
 	

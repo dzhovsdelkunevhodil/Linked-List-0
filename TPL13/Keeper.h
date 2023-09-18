@@ -6,14 +6,14 @@ class Keeper {
 
 
 private:
-    template<class T>
+    template <class T>
     class Element {        //  один элемент в очереди
     public:
-        T value;          //значение
+        T* value;          //значение
         Element<T>* prev;
-
-        Element(T data = T(), Element* prev = nullptr) {    //конструктор элемента
-            this->value = data;
+        
+        Element(T data /*= T()*/, Element<T>* prev = nullptr) {    //конструктор элемента
+            this->value = &data;
             this->prev = prev;
         }
     };
@@ -25,24 +25,47 @@ public:
 	Keeper() {
 		count = 0;
         head = nullptr;
-
+        help = nullptr;
 	}
 
-    void addElement(T x) {
+    T& operator[] (const int index) {
+
+        int cnt = 0;
+        Element<T>* cur;
+
+        cur = this->head;
+        while (cur->prev != nullptr) {
+            if (cnt == index) {
+                return  *(cur->value);
+            }
+
+            cur = cur->prev;
+            cnt++;
+        }
+
+    }
+
+
+    void addElement(T& x) {
         if (head == nullptr) {
             head = new Element<T>(x);
-            head->value = x;
+            head->value = &x;
             
         }
         else {
             help = new Element<T>(x);
             help->prev = head;
             head = help;
+            head->value = &x;
         }
         count++;
     }
+    /*
+    void Init() {
 
+    }*/
 
+   
     int getCount() { return count; }
 
 };
