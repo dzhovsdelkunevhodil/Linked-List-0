@@ -11,14 +11,29 @@ private:
 
 
 public:
-	Car() {
 
+	Car() {
+		brand = "";
+		model = "";
+		snumber = "";
 	}
-	void display() override {
+	
+	void setData() override {
+		std::cout << "bra: ";
+		std::cin >> this->brand;
+		std::cout << '\n';
+		std::cout << "model: ";
+		std::cin >> this->model;
+		std::cout << '\n';
+		std::cout << "snumber: ";
+		std::cin >> this->snumber;
+		std::cout << '\n';
+	}
+
+	friend void operator<< (std::ostream& out, Car& car) {
 		std::cout << "Car\n";
-		std::cout << "bra \t:\t" << brand << '\n';
-		std::cout << "mod \t:\t" << model << '\n';
-		std::cout << "snu \t:\t" << snumber << '\n';
-		
+		std::cout << "bra \t:\t" << car.brand << '\n';
+		std::cout << "mod \t:\t" << car.model << '\n';
+		std::cout << "snu \t:\t" << car.snumber << '\n';
 	}
 };

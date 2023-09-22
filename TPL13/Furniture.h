@@ -20,17 +20,8 @@ private:
 	int cost;
 
 public:
-	void display() override {
-		std::cout << "Furniture\n";
-		std::cout << "typ \t:\t" << type << '\n';
-		std::cout << "dee \t:\t" << size.deep << '\n';
-		std::cout << "hei \t:\t" << size.height << '\n';
-		std::cout << "wid \t:\t" << size.width << '\n';
-		std::cout << "col \t:\t" << color << '\n';
-		std::cout << "mat \t:\t" << material << '\n';
-		std::cout << "cos \t:\t" << cost << '\n';
-	}
 
+	
 
 	Furniture() {
 		type = "";
@@ -40,6 +31,16 @@ public:
 		color = "";
 		material = "";
 		cost = 0;
+	}
+
+	Furniture(Furniture& f) {
+		type = f.type;
+		size.deep = f.size.deep;
+		size.height = f.size.height;
+		size.width = f.size.width;
+		color = f.color;
+		material = f.material;
+		cost = f.cost;
 	}
 
 	friend void operator<< (std::ostream& out, Furniture& furn) {
@@ -55,7 +56,7 @@ public:
 	}
 
 
-	void setData() {
+	void setData() override {
 		std::cout << "typ: ";
 		std::cin >> this->type;
 		std::cout << '\n';

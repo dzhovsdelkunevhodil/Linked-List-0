@@ -49,16 +49,21 @@ main обязана располагаться в отдельном cpp фай�
 #include "Keeper.h"
 
 int main() {
-	Keeper<Furniture> fur;
-	Furniture f,f1;
-	f.setData();
-	f1.setData();
+	//Keeper<Furniture> fur;
+	//Furniture f,f1;
+	//f.setData();
+	//f1.setData();
 
 
-	fur.addElement(f);
-	fur.addElement(f1);
+	//fur.addElement(f);
+	//fur.addElement(f1);
+
+	Menu();
+
+
+
 	
-	std::cout << fur[0];
+	//std::cout << fur[0];
 	//Menu();
 	return 0;
 }

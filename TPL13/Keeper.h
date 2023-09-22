@@ -30,17 +30,17 @@ public:
 
     T& operator[] (const int index) {
 
-        int cnt = 0;
+        int cnt = getCount();
         Element<T>* cur;
 
         cur = this->head;
-        while (cur->prev != nullptr) {
+        while (cur != nullptr) {
             if (cnt == index) {
                 return  *(cur->value);
             }
 
             cur = cur->prev;
-            cnt++;
+            cnt--;
         }
 
     }
@@ -60,10 +60,51 @@ public:
         }
         count++;
     }
-    /*
-    void Init() {
 
-    }*/
+
+
+
+    void extractElement(const int index) {	//метод удаления элемента по индексу
+
+        if (getCount() == 1) {	//если в очереди один элемент
+            delete this->head;	//удаляем голову, счетчик=0, пишем соощение
+            count--;
+            //std::cout << "Очередь полностью извлечена" << std::endl;
+        }
+        else if (index == getCount()) {	//если удаляется последний элемент
+            Element<T>* cur = this->head;	//временный указатель на голову
+            head = head->prev;	//передвигаем голову
+            delete cur;			//удаляем временный, вместе со старой головой
+            count--;	//убавляем на один элемент
+        }
+        else {		//если не последний, и в очереди >одного элемента
+            Element<T>* cur = this->head;		//первый временный
+            Element<T>* current1 = this->head;		//второй временный
+            int c = getCount();	//количество элементов
+            bool flag = 0;	//флаг для прекращения
+            while (flag != 1) {
+                if (c == index) {		//если дошли до нужного элемента
+                    int r = getCount();
+                    while (r != (c + 1)) {
+                        current1 = current1->prev;	//передвигаем второй на один позже первого временного
+                        r--;
+                    }
+                    Element<T>* temp = cur;//указатель на удаляемый элемент		
+                    cur = cur->prev;				//настраиваем указатели
+                    current1->prev = cur;		//без удаляемого
+                    delete temp;
+                    flag = 1;	//прекращение работы
+                    count--;	//убавляем элемент
+
+                }
+                else {	//если не дошли до нужного элемента
+                    cur = cur->prev;	//	двигаемся по очереди
+                    c--;
+                }
+            }
+        }
+    }
+    
 
    
     int getCount() { return count; }
