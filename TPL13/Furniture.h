@@ -82,6 +82,8 @@ public:
 
 
 
-	
+	int getCost() {
+		return cost;
+	}
 
 };

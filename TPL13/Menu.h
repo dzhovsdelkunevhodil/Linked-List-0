@@ -68,7 +68,10 @@ void MenuFurniture(Keeper<Furniture>& f) {
 		case 3:
 			system("cls");
 
+			//std::cout<<(f[1].getCost());
 
+
+			f.sortirovka(f,0,f.getCount()-1);
 
 			system("pause");
 			system("cls");
@@ -78,18 +81,7 @@ void MenuFurniture(Keeper<Furniture>& f) {
 			system("cls");
 
 
-			std::cout << "\nFurniture all" << std::endl;
-
-			if (f.getCount() == 0) {
-				std::cout << "Элементов Furniture нет" << std::endl;
-
-			}
-			for (int i = 1;i < f.getCount()+1;++i) {
-				std::cout << f[i];
-				std::cout << '\n';
-
-			}
-			std::cout << "\nКоличество элементов Furniture: " << f.getCount() << std::endl << std::endl;
+			f.display(f);
 
 			
 
@@ -156,18 +148,7 @@ void MenuWorker(Keeper<Worker>& w) {
 			system("cls");
 
 
-			std::cout << "\nFurniture all" << std::endl;
-
-			if (w.getCount() == 0) {
-				std::cout << "Элементов Furniture нет" << std::endl;
-
-			}
-			for (int i = 1;i < w.getCount() + 1;++i) {
-				std::cout << w[i];
-				std::cout << '\n';
-
-			}
-			std::cout << "\nКоличество элементов Furniture: " << w.getCount() << std::endl << std::endl;
+			w.display(w);
 
 
 
@@ -233,22 +214,8 @@ void MenuCar(Keeper<Car>& c) {
 		case 4:
 			system("cls");
 
-
-			std::cout << "\nFurniture all" << std::endl;
-
-			if (c.getCount() == 0) {
-				std::cout << "Элементов Furniture нет" << std::endl;
-
-			}
-			for (int i = 1;i < c.getCount() + 1;++i) {
-				std::cout << c[i];
-				std::cout << '\n';
-
-			}
-			std::cout << "\nКоличество элементов Furniture: " << c.getCount() << std::endl << std::endl;
-
-
-
+			c.display(c);
+			
 			system("pause");
 			system("cls");
 			MenuInClass();
@@ -311,7 +278,9 @@ void Menu() {
 		case 4:
 			system("cls");
 
-
+			fur.display(fur);
+			wor.display(wor);
+			car.display(car);
 
 			system("pause");
 			system("cls");

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <algorithm>
 
 template <class T>
 class Keeper {
@@ -42,7 +42,7 @@ public:
             cur = cur->prev;
             cnt--;
         }
-
+        
     }
 
 
@@ -107,7 +107,53 @@ public:
     
 
    
+    
+    
+
+    void sortirovka(Keeper<Furniture>& k, int left, int right) {
+        /*
+        for (int i = 1;i < k.getCount()+1;++i) {
+            for (int j = 1;j < k.getCount();++j) {
+
+                if ((k[j].getCost()) > (k[j + 1].getCost())){
+                    Furniture b = k[j]; // создали дополнительную переменную
+                    k[j] = k[j + 1]; // меняем местами
+                    k[j + 1] = b; // значения элементов
+                }
+            }
+        }*/
+
+        }
+
+
+
+
+
+    }
+
+
+
+    void display(Keeper<T>& k) {
+        std::cout << "\nAll Element of " << typeid(T).name() << std::endl;
+
+        if (k.getCount() == 0) {
+            std::cout << "Элементов " << typeid(T).name() << " нет\n";
+
+        }
+        for (int i = 1;i < k.getCount() + 1;++i) {
+            std::cout << k[i];
+            std::cout << '\n';
+
+        }
+        std::cout << "\nКоличество элементов " << typeid(T).name()<< " : " << k.getCount() << std::endl << std::endl;
+    }
+
+
+
+   
     int getCount() { return count; }
+
+
 
 };
 
