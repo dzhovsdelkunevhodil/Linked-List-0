@@ -1,6 +1,9 @@
 #pragma once
 #include <algorithm>
-
+#include "Menu.h"
+void MenuAttributesF();
+void MenuAttributesW();
+void MenuAttributesC();
 template <class T>
 class Keeper {
 
@@ -105,13 +108,251 @@ public:
         }
     }
     
+    void changeElementW(Keeper<Worker>& w, int& a) {
+        int ind = 0;
+        std::cout << "Выберите номер элемента для редактирования: ";
+        std::cin >> ind;
+        std::string valuestr = "";
+        int value = 0;
+        while (a != 0) {
+            switch (a) {
+            case 1:
+                system("cls");
 
+                std::cout << w[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                w[ind].setFIO(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesW();
+                break;
+            case 2:
+                system("cls");
+
+                std::cout << w[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                w[ind].setPost(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesW();
+
+                break;
+            case 3:
+                system("cls");
+
+                std::cout << w[ind];
+                value = 0;
+                std::cout << "Введите значение: ";
+                std::cin >> value;
+                w[ind].setSal(value);
+
+                system("pause");
+                system("cls");
+                MenuAttributesW();
+                break;
+            case 4:
+                system("cls");
+
+                std::cout << w[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                w[ind].setAdd(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesW();
+                break;
+            case 5:
+                system("cls");
+
+                std::cout << w[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                w[ind].setNum(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesW();
+                break;
+            default:
+                system("cls");
+
+                std::cout << "Trouble maaaann. Select attribute again.\n";
+
+                system("pause");
+                system("cls");
+                MenuAttributesW();
+                break;
+
+            }
+        }
+
+    }
    
-    
-    
+    void changeElementF(Keeper<Furniture>& k, int& a) {
+        int ind = 0;
+        std::cout << "Выберите номер элемента для редактирования: ";
+        std::cin >> ind;
+        std::string valuestr = "";
+        int value = 0;
+        int b = 0;
+        while (a != 0) {
+            switch (a) {
+            case 1:
+                system("cls");
 
-    void sortirovka(Keeper<Furniture>& k, int left, int right) {
-        /*
+                std::cout << k[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                k[ind].setType(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesF();
+                break;
+            case 2:
+                system("cls");
+
+                std::cout << k[ind];
+                value = 0;
+                std::cout << "Какой размер хотите изменить \n1 - Глубина\n2 - Высота\n3 - Ширина\n Выбор: ";
+                std::cin >> b;
+                std::cout << "Введите значение: ";
+                std::cin >> value;
+                k[ind].setSize(value, b);
+
+                system("pause");
+                system("cls");
+                MenuAttributesF();
+              
+                break;
+            case 3:
+                system("cls");
+
+                std::cout << k[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                k[ind].setColor(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesF();
+                break;
+            case 4:
+                system("cls");
+
+                std::cout << k[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                k[ind].setMat(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesF();
+                break;
+            case 5:
+                system("cls");
+
+                std::cout << k[ind];
+                value = 0;
+                std::cout << "Введите значение: ";
+                std::cin >> value;
+                k[ind].setCost(value);
+
+                system("pause");
+                system("cls");
+                MenuAttributesF();
+                break;
+            default:
+                system("cls");
+
+                std::cout << "Trouble maaaann. Select attribute again.\n";
+
+                system("pause");
+                system("cls");
+                MenuAttributesF();
+                break;
+
+            }
+        }
+
+    }
+    
+    void changeElementC(Keeper<Car>& c, int& a) {
+        int ind = 0;
+        std::cout << "Выберите номер элемента для редактирования: ";
+        std::cin >> ind;
+        std::string valuestr = "";
+        while (a != 0) {
+            switch (a) {
+            case 1:
+                system("cls");
+
+                std::cout << c[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                c[ind].setBrand(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesC();
+                break;
+            case 2:
+                system("cls");
+
+                std::cout << c[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                c[ind].setModel(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesC();
+
+                break;
+            case 3:
+                system("cls");
+
+                std::cout << c[ind];
+                valuestr = "";
+                std::cout << "Введите значение: ";
+                std::cin >> valuestr;
+                c[ind].setSnum(valuestr);
+
+                system("pause");
+                system("cls");
+                MenuAttributesC();
+                break;
+            default:
+                system("cls");
+
+                std::cout << "Trouble maaaann. Select attribute again.\n";
+
+                system("pause");
+                system("cls");
+                MenuAttributesC();
+                break;
+
+            }
+        }
+
+    }
+
+    void sortirovka(Keeper<Furniture>& k) {
+        
         for (int i = 1;i < k.getCount()+1;++i) {
             for (int j = 1;j < k.getCount();++j) {
 
@@ -121,16 +362,9 @@ public:
                     k[j + 1] = b; // значения элементов
                 }
             }
-        }*/
-
         }
 
-
-
-
-
     }
-
 
 
     void display(Keeper<T>& k) {
@@ -153,249 +387,4 @@ public:
    
     int getCount() { return count; }
 
-
-
 };
-
-/*
-
-template<typename T>
-class Deque {
-private:
-
-    template<typename T>
-    class Element {        //  один элемент в очереди
-    public:
-        T value;          //значение
-        Element* next;
-        Element* prev;
-
-        Element(T data = T(), Element* next = nullptr, Element* prev = nullptr) {    //конструктор элемента
-            this->value = data;
-            this->next = next;
-            this->prev = prev;
-        }
-    };
-
-    int count;          //количество элементов в очереди
-    Element<T>* left;      //указатель на первый элемент
-    Element<T>* right;     //указатель на последний элемент
-    Element<T>* help;
-
-public:
-
-
-    Deque(Deque<T>& dq) {
-
-        count = dq.count;
-        for (int i = 0; i < count; i++) {
-            addElement(dq[i]);
-        }
-    }
-
-    int getCount() { return count; }
-    virtual ~Deque() {};
-
-    Deque() {
-
-        count = 0;
-        left = nullptr;
-        right = nullptr;
-        help = nullptr;
-
-        //чисто мое задание, заполнение рандомно
-        srand(time(0));
-
-        count = rand() % 30;
-
-
-
-        for (int i = 0; i < count; i++) {
-
-            if (left == nullptr) {
-                left = new Element<T>(rand() % 10);
-                help = right = left;
-                left->prev = right->prev = nullptr;
-            }
-            else {
-                help = new Element<T>(rand() % 10);
-                help->prev = right;
-                right->next = help;
-                right = help;
-                right->prev = help->prev;
-
-            }
-
-        }
-        right->next = nullptr;
-
-    }
-
-    void addElement(T x) {
-        if (left == nullptr) {
-            left = new Element<T>(x);
-            left->value = x;
-            right = left = help;
-        }
-        else {
-            help = new Element<T>(x);
-            help->prev = right;
-            right->next = help;
-            right = help;
-        }
-        count++;
-    }
-
-
-    T& operator[] (const int index) {
-
-        int cnt = 0;
-        Element<T>* cur;
-
-        cur = this->left;
-        while (cur->next != nullptr) {
-            if (cnt == index) {
-                return  cur->value;
-            }
-
-            cur = cur->next;
-            cnt++;
-        }
-
-    }
-
-
-
-    Deque(int size) {
-        try {
-
-            if (size == 0) {
-                throw 0;
-            }
-
-            count = size;
-            left = nullptr;
-            right = nullptr;
-            help = nullptr;
-
-
-            srand(time(0));
-
-
-
-
-            for (int i = 0; i < count; i++) {
-
-                if (left == nullptr) {
-                    left = new Element<T>(rand() % 10);
-                    help = right = left;
-                    left->prev = right->prev = nullptr;
-                }
-                else {
-                    help = new Element<T>(rand() % 10);
-                    help->prev = right;
-                    right->next = help;
-                    right = help;
-                    right->prev = help->prev;
-
-                }
-            }
-            right->next = nullptr;
-        }
-        catch (...) {
-            //std::cout << "555\n";
-            count = 0;
-            left = nullptr;
-            right = nullptr;
-            help = nullptr;
-
-
-            srand(time(0));
-
-            count = rand() % 30;
-
-            for (int i = 0; i < count; i++) {
-
-                if (left == nullptr) {
-                    left = new Element<T>(rand() % 10);
-                    help = right = left;
-                    left->prev = right->prev = nullptr;
-                }
-                else {
-                    help = new Element<T>(rand() % 10);
-                    help->prev = right;
-                    right->next = help;
-                    right = help;
-                    right->prev = help->prev;
-
-                }
-            }
-            right->next = nullptr;
-        }
-
-    }
-    friend void operator<< (std::ostream& out, Deque<T>& dq) {
-        dq.extractElement(1);
-
-    }
-
-    friend void operator>> (std::ostream& out, Deque<T>& dq) {
-        dq.extractElement(0);
-
-    }
-
-    void extractElement(bool b) {
-        if (b == 1) {
-            help = left;
-            left = left->next;
-            left->prev = nullptr;
-            count--;
-            delete help;
-        }
-        else {
-            help = right;
-            right = right->prev;
-            right->next = nullptr;
-            count--;
-            delete help;
-        }
-    }
-
-    friend void operator+ (Deque<T>& fq, Deque<T>& dq) {
-        int i;
-        if (fq.count <= dq.count) {
-            i = 0;
-            while (i < fq.count) {
-                fq[i] += dq[i];
-                i++;
-            }
-
-            while (i < dq.count) {
-                fq.addElement(dq[i]);
-                i++;
-            }
-
-        }
-
-        else {
-            i = 0;
-            while (i < dq.count) {
-                fq[i] += dq[i];
-                i++;
-            }
-        }
-    }
-
-    friend bool operator> (Deque<T>& fq, Deque<T>& dq) {
-        if (fq.count > dq.count) {
-
-            return true;
-        }
-        else if (fq.count < dq.count) {
-
-            return false;
-        }
-
-    }
-
-};*/

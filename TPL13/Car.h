@@ -12,6 +12,18 @@ private:
 
 public:
 
+	void setBrand(std::string a) {
+		brand = a;
+	}
+
+	void setModel(std::string a) {
+		model = a;
+	}
+
+	void setSnum(std::string a) {
+		snumber = a;
+	}
+
 	Car() {
 		brand = "";
 		model = "";

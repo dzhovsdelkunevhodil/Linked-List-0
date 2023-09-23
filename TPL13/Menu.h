@@ -6,7 +6,7 @@
 int action;
 int actionF;
 int val = 0;
-
+int actionAttribute;
 
 void MenuMain() {
 
@@ -32,6 +32,42 @@ void MenuInClass() {
 	std::cin >> actionF;
 }
 
+void MenuAttributesF() {
+	std::cout << "Выберите что хотите изменить\n";
+	std::cout << "1 - Тип мебели\n";
+	std::cout << "2 - Размеры\n";
+	std::cout << "3 - Цвет\n";
+	std::cout << "4 - Материал\n";
+	std::cout << "5 - Стоимость\n";
+	std::cout << "0 - Выход\n";
+	std::cout << "Ваш выбор: \n";
+	std::cin >> actionAttribute;
+}
+
+void MenuAttributesW() {
+	std::cout << "Выберите что хотите изменить\n";
+	std::cout << "1 - ФИО\n";
+	std::cout << "2 - Должность\n";
+	std::cout << "3 - Зар. плата\n";
+	std::cout << "4 - Адрес\n";
+	std::cout << "5 - Номер телефона\n";
+	std::cout << "0 - Выход\n";
+	std::cout << "Ваш выбор: \n";
+	std::cin >> actionAttribute;
+}
+
+void MenuAttributesC() {
+	std::cout << "Выберите что хотите изменить\n";
+	std::cout << "1 - Марка\n";
+	std::cout << "2 - Модель\n";
+	std::cout << "3 - Гос. номер\n";
+	std::cout << "0 - Выход\n";
+	std::cout << "Ваш выбор: \n";
+	std::cin >> actionAttribute;
+}
+
+
+
 void MenuFurniture(Keeper<Furniture>& f) {
 
 	setlocale(LC_ALL, "Russian");
@@ -56,6 +92,7 @@ void MenuFurniture(Keeper<Furniture>& f) {
 			break;
 		case 2:
 			system("cls");
+			val = 0;
 			std::cout << "Введите номер элемента для извлечения из очереди: ";
 			std::cin >> val;
 			std::cout << f[val];
@@ -67,11 +104,12 @@ void MenuFurniture(Keeper<Furniture>& f) {
 			break;
 		case 3:
 			system("cls");
-
+			actionAttribute = 0;
+			MenuAttributesF();
 			//std::cout<<(f[1].getCost());
+			f.changeElementF(f, actionAttribute);
 
-
-			f.sortirovka(f,0,f.getCount()-1);
+			//f.sortirovka(f);
 
 			system("pause");
 			system("cls");
@@ -126,6 +164,7 @@ void MenuWorker(Keeper<Worker>& w) {
 			break;
 		case 2:
 			system("cls");
+			val = 0;
 			std::cout << "Введите номер элемента для извлечения из очереди: ";
 			std::cin >> val;
 			std::cout << w[val];
@@ -138,7 +177,9 @@ void MenuWorker(Keeper<Worker>& w) {
 		case 3:
 			system("cls");
 
-
+			actionAttribute = 0;
+			MenuAttributesW();
+			w.changeElementW(w, actionAttribute);
 
 			system("pause");
 			system("cls");
@@ -147,10 +188,7 @@ void MenuWorker(Keeper<Worker>& w) {
 		case 4:
 			system("cls");
 
-
 			w.display(w);
-
-
 
 			system("pause");
 			system("cls");
@@ -193,6 +231,7 @@ void MenuCar(Keeper<Car>& c) {
 			break;
 		case 2:
 			system("cls");
+			val = 0;
 			std::cout << "Введите номер элемента для извлечения из очереди: ";
 			std::cin >> val;
 			std::cout << c[val];
@@ -205,7 +244,9 @@ void MenuCar(Keeper<Car>& c) {
 		case 3:
 			system("cls");
 
-
+			actionAttribute = 0;
+			MenuAttributesC();
+			c.changeElementC(c, actionAttribute);
 
 			system("pause");
 			system("cls");

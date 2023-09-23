@@ -10,6 +10,23 @@ private:
 	std::string number;
 public:
 
+	void setFIO(std::string& a) {
+		fio = a;
+	}
+
+	void setPost(std::string& a) {
+		post = a;
+	}
+	void setSal(int& a) {
+		salary = a;
+	}
+	void setAdd(std::string& a) {
+		address = a;
+	}
+	void setNum(std::string& a) {
+		number = a;
+	}
+
 	Worker() {
 		fio = "";
 		post = "";

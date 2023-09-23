@@ -44,6 +44,8 @@ main обязана располагаться в отдельном cpp фай�
 */
 #include "Factory.h"
 #include "Furniture.h"
+#include "Worker.h"
+#include "Car.h"
 
 #include "Menu.h"
 #include "Keeper.h"

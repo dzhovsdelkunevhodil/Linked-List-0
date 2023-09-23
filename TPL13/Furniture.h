@@ -21,8 +21,30 @@ private:
 
 public:
 
-	
+	void setType(std::string& a) {
+		type = a;
+	}
+	void setSize(int& a, int& b) {
 
+		if (b == 1) {
+			size.deep = a;
+		}
+		if (b == 2) {
+			size.height = a;
+		}
+		if (b == 3) {
+			size.width = a;
+		} 
+	}
+	void setColor(std::string a) {
+		color = a;
+	}
+	void setMat(std::string a) {
+		material = a;
+	}
+	void setCost(int a) {
+		cost = a;
+	}
 	Furniture() {
 		type = "";
 		size.deep = 0;
