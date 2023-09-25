@@ -46,6 +46,7 @@ public:
             extractElement(i);
         }
     }
+    int getCount() { return count; }
 
     T& operator[] (const int index) {
 
@@ -80,51 +81,61 @@ public:
     }
 
     void extractElement(const int index) {	//метод удаления элемента по индексу
-
-        if (getCount() == 1) {	//если в очереди один элемент
-            delete this->head;	//удаляем голову, счетчик=0, пишем соощение
-            count--;
-            //std::cout << "Очередь полностью извлечена" << std::endl;
-        }
-        else if (index == getCount()) {	//если удаляется последний элемент
-            Element<T>* cur = this->head;	//временный указатель на голову
-            head = head->prev;	//передвигаем голову
-            delete cur;			//удаляем временный, вместе со старой головой
-            count--;	//убавляем на один элемент
-        }
-        else {		//если не последний, и в очереди >одного элемента
-            Element<T>* cur = this->head;		//первый временный
-            Element<T>* current1 = this->head;		//второй временный
-            int c = getCount();	//количество элементов
-            bool flag = 0;	//флаг для прекращения
-            while (flag != 1) {
-                if (c == index) {		//если дошли до нужного элемента
-                    int r = getCount();
-                    while (r != (c + 1)) {
-                        current1 = current1->prev;	//передвигаем второй на один позже первого временного
-                        r--;
-                    }
-                    Element<T>* temp = cur;//указатель на удаляемый элемент		
-                    cur = cur->prev;				//настраиваем указатели
-                    current1->prev = cur;		//без удаляемого
-                    delete temp;
-                    flag = 1;	//прекращение работы
-                    count--;	//убавляем элемент
-
-                }
-                else {	//если не дошли до нужного элемента
-                    cur = cur->prev;	//	двигаемся по очереди
-                    c--;
-                }
+       
+           
+            if (getCount() == 1) {	//если в очереди один элемент
+                delete this->head;	//удаляем голову, счетчик=0, пишем соощение
+                count--;
+                //std::cout << "Очередь полностью извлечена" << std::endl;
             }
-            delete cur, current1;
-        }
+            else if (index == getCount()) {	//если удаляется последний элемент
+                Element<T>* cur = this->head;	//временный указатель на голову
+                head = head->prev;	//передвигаем голову
+                delete cur;			//удаляем временный, вместе со старой головой
+                count--;	//убавляем на один элемент
+            }
+            else {		//если не последний, и в очереди >одного элемента
+                Element<T>* cur = this->head;		//первый временный
+                Element<T>* current1 = this->head;		//второй временный
+                int c = getCount();	//количество элементов
+                bool flag = 0;	//флаг для прекращения
+                while (flag != 1) {
+                    if (c == index) {		//если дошли до нужного элемента
+                        int r = getCount();
+                        while (r != (c + 1)) {
+                            current1 = current1->prev;	//передвигаем второй на один позже первого временного
+                            r--;
+                        }
+                        Element<T>* temp = cur;//указатель на удаляемый элемент		
+                        cur = cur->prev;				//настраиваем указатели
+                        current1->prev = cur;		//без удаляемого
+                        delete temp;
+                        flag = 1;	//прекращение работы
+                        count--;	//убавляем элемент
+
+                    }
+                    else {	//если не дошли до нужного элемента
+                        cur = cur->prev;	//	двигаемся по очереди
+                        c--;
+                    }
+                }
+                delete cur, current1;
+            }
+       
     }
     
     void changeElementW(Keeper<Worker>& w, int& a) {
         int ind = 0;
-        std::cout << "Выберите номер элемента для редактирования: ";
-        std::cin >> ind;
+        try {
+            std::cout << "Выберите номер элемента для редактирования: ";
+            std::cin >> ind;
+            if (ind <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю\n");
+        }
+        catch (const std::exception& ex) {
+            std::cout << ex.what()<<'\n';
+            std::cout << "Выберите адекватный номер элемента для редактирования: ";
+            std::cin >> ind;
+        }
         std::string valuestr = "";
         int value = 0;
         while (a != 0) {
@@ -212,6 +223,16 @@ public:
    
     void changeElementF(Keeper<Furniture>& k, int& a) {
         int ind = 0;
+        try {
+            std::cout << "Выберите номер элемента для редактирования: ";
+            std::cin >> ind;
+            if (ind <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю\n");
+        }
+        catch (const std::exception& ex) {
+            std::cout << ex.what() << '\n';
+            std::cout << "Выберите адекватный номер элемента для редактирования: ";
+            std::cin >> ind;
+        }
         std::cout << "Выберите номер элемента для редактирования: ";
         std::cin >> ind;
         std::string valuestr = "";
@@ -304,6 +325,16 @@ public:
     
     void changeElementC(Keeper<Car>& c, int& a) {
         int ind = 0;
+        try {
+            std::cout << "Выберите номер элемента для редактирования: ";
+            std::cin >> ind;
+            if (ind <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю\n");
+        }
+        catch (const std::exception& ex) {
+            std::cout << ex.what() << '\n';
+            std::cout << "Выберите адекватный номер элемента для редактирования: ";
+            std::cin >> ind;
+        }
         std::cout << "Выберите номер элемента для редактирования: ";
         std::cin >> ind;
         std::string valuestr = "";
@@ -379,33 +410,44 @@ public:
     }
 
     void display(Keeper<T>& k) {
-        std::cout << "\nAll Element of " << typeid(T).name() << std::endl;
+        try {
+           
+            if (k.getCount() == 0) throw std::exception("Элементов нет\n");
+            std::cout << "\nAll Element of " << typeid(T).name() << std::endl;
 
-        if (k.getCount() == 0) {
-            std::cout << "Элементов " << typeid(T).name() << " нет\n";
+             
+            for (int i = 1;i < k.getCount() + 1;++i) {
+                std::cout << k[i];
+                std::cout << '\n';
 
+            }
+            std::cout << "\nКоличество элементов " << typeid(T).name() << " : " << k.getCount() << std::endl << std::endl;
         }
-        for (int i = 1;i < k.getCount() + 1;++i) {
-            std::cout << k[i];
-            std::cout << '\n';
+        catch (const std::exception& ex) {
 
+            std::cout << ex.what() << '\n';
         }
-        std::cout << "\nКоличество элементов " << typeid(T).name()<< " : " << k.getCount() << std::endl << std::endl;
     }
 
     void fileDisplay(Keeper<Furniture>& k) {
         std::ofstream out;          // поток для записи
         out.open("out.txt", std::ios::out);      // открываем файл для записи
-        if (out.is_open())
-        {
-            std::cout << "yeah";
-            for (int i = 1;i < k.getCount() + 1;++i) {
-                out << "Furniture ";
-                out << i;
-                out << '\n';
-                k[i].getData(out);
-                out << '\n';
-            }
+       
+        try {
+            if (!out.is_open()) throw std::exception("Файл не открыт\n");
+            
+                std::cout << "yeah";
+                for (int i = 1;i < k.getCount() + 1;++i) {
+                    out << "Furniture ";
+                    out << i;
+                    out << '\n';
+                    k[i].getData(out);
+                    out << '\n';
+                }
+            
+        }
+        catch (const std::exception& ex) {
+            std::cout << ex.what();
         }
         out.close();
     }
@@ -413,9 +455,10 @@ public:
     void fileDisplayT(Keeper<T>& k) {
         std::ofstream out;          // поток для записи
         out.open("out.txt", std::ios::app);      // открываем файл для записи
-        if (out.is_open())
-        {
-            std::cout << "yeah";
+        try {
+            if (!out.is_open()) throw std::exception("Файл не открыт\n");
+
+                std::cout << "yeah";
             for (int i = 1;i < k.getCount() + 1;++i) {
                 out << typeid(T).name();
                 out << i;
@@ -424,18 +467,22 @@ public:
                 out << '\n';
             }
         }
+        catch (const std::exception& ex) {
+            std::cout << ex.what();
+        }
         out.close();
     }
 
-     void fileSetData(Keeper<Furniture>& f, Keeper<Worker>& w, Keeper<Car>& c) {
+    void fileSetData(Keeper<Furniture>& f, Keeper<Worker>& w, Keeper<Car>& c) {
         int v = 0;
         Furniture* fu;
         Worker* wo;
         Car* ca;
         std::ifstream in;          // поток для записи
         in.open("in.txt");      // открываем файл для записи
-        if (in.is_open()){
-            std::cout << "yeah";
+        try {
+            if (!in.is_open()) throw std::exception("Файл не открыт\n");
+                std::cout << "yeah";
             in >> v;
 
             for (int i = 1;i < v + 1;++i) {
@@ -462,13 +509,11 @@ public:
                 c.addElement(*ca);
                 //in >> c;
             }
-
-
-
+        }
+        catch (const std::exception& ex) {
+            std::cout << ex.what();
         }
         in.close();
     }
-
-    int getCount() { return count; }
 
 };

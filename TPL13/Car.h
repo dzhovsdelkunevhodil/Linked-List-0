@@ -12,15 +12,15 @@ private:
 
 public:
 
-	void setBrand(std::string a) {
+	void setBrand(std::string& a) {
 		brand = a;
 	}
 
-	void setModel(std::string a) {
+	void setModel(std::string& a) {
 		model = a;
 	}
 
-	void setSnum(std::string a) {
+	void setSnum(std::string& a) {
 		snumber = a;
 	}
 
@@ -31,6 +31,18 @@ public:
 		brand = "";
 		model = "";
 		snumber = "";
+	}
+
+	std::string getBra() {
+		return brand;
+	}
+
+	std::string getMod() {
+		return model;
+	}
+
+	std::string getSnu() {
+		return snumber;
 	}
 
 	void getData(std::ofstream& out) override {
@@ -52,15 +64,17 @@ public:
 	}
 
 	void setData() override {
-		std::cout << "bra: ";
-		std::cin >> this->brand;
-		std::cout << '\n';
-		std::cout << "model: ";
-		std::cin >> this->model;
-		std::cout << '\n';
-		std::cout << "snumber: ";
-		std::cin >> this->snumber;
-		std::cout << '\n';
+		
+			std::cout << "bra: ";
+			std::cin >> this->brand;
+			std::cout << '\n';
+			std::cout << "model: ";
+			std::cin >> this->model;
+			std::cout << '\n';
+			std::cout << "snumber: ";
+			std::cin >> this->snumber;
+			std::cout << '\n';
+			
 	}
 
 	friend void operator<< (std::ostream& out, Car& car) {

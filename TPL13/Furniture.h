@@ -124,27 +124,34 @@ public:
 
 
 	void setData() override {
-		std::cout << "typ: ";
-		std::cin >> this->type;
-		std::cout << '\n';
-		std::cout << "dee: ";
-		std::cin >> this->size.deep;
-		std::cout << '\n';
-		std::cout << "hei: ";
-		std::cin >> this->size.height;
-		std::cout << '\n';
-		std::cout << "wid: ";
-		std::cin >> this->size.width;
-		std::cout << '\n';
-		std::cout << "col: ";
-		std::cin >> this->color;
-		std::cout << '\n';
-		std::cout << "mat: ";
-		std::cin >> this->material;
-		std::cout << '\n';
-		std::cout << "cos: ";
-		std::cin >> this->cost;
-		std::cout << '\n';
+	
+			std::cout << "typ: ";
+			std::cin >> this->type;
+			std::cout << '\n';
+			std::cout << "dee: ";
+			
+			std::cin >> this->size.deep;
+			
+			std::cout << '\n';
+			std::cout << "hei: ";
+			std::cin >> this->size.height;
+			
+			std::cout << '\n';
+			std::cout << "wid: ";
+			std::cin >> this->size.width;
+			
+			std::cout << '\n';
+			std::cout << "col: ";
+			std::cin >> this->color;
+			std::cout << '\n';
+			std::cout << "mat: ";
+			std::cin >> this->material;
+			std::cout << '\n';
+			std::cout << "cos: ";
+			std::cin >> this->cost;
+			
+			std::cout << '\n';
+		
 	}
 
 	std::string getType() {

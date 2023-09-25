@@ -92,12 +92,21 @@ void MenuFurniture(Keeper<Furniture>& f) {
 			break;
 		case 2:
 			system("cls");
-			val = 0;
-			std::cout << "Введите номер элемента для извлечения из очереди: ";
-			std::cin >> val;
-			std::cout << f[val];
-			f.extractElement(val);
 
+			try {
+				if (f.getCount() == 0) throw std::exception("В Keeper нет элементов");
+				
+				val = 0;
+				std::cout << "Введите номер элемента для извлечения из очереди: ";
+				std::cin >> val;
+				if (val <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю");
+				if (f.getCount() < val)  throw std::exception("Такого элемента не существует");
+				std::cout << f[val];
+				f.extractElement(val);
+			}
+			catch (const std::exception& ex) {
+				std::cout << ex.what() << '\n';
+			}
 			system("pause");
 			system("cls");
 			MenuInClass();
@@ -118,10 +127,7 @@ void MenuFurniture(Keeper<Furniture>& f) {
 		case 4:
 			system("cls");
 
-
 			f.display(f);
-
-			
 
 			system("pause");
 			system("cls");
@@ -158,18 +164,26 @@ void MenuWorker(Keeper<Worker>& w) {
 			wo->setData();
 			w.addElement(*wo);
 
+
 			system("pause");
 			system("cls");
 			MenuInClass();
 			break;
 		case 2:
 			system("cls");
-			val = 0;
-			std::cout << "Введите номер элемента для извлечения из очереди: ";
-			std::cin >> val;
-			std::cout << w[val];
-			w.extractElement(val);
-
+			try {
+				if (w.getCount() == 0) throw std::exception("В Keeper нет элементов");
+				val = 0;
+				std::cout << "Введите номер элемента для извлечения из очереди: ";
+				std::cin >> val;
+				if (val <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю");
+				if (w.getCount() < val )  throw std::exception("Такого элемента не существует");
+				std::cout << w[val];
+				w.extractElement(val);
+			}
+			catch (const std::exception& ex) {
+				std::cout << ex.what() << '\n';
+			}
 			system("pause");
 			system("cls");
 			MenuInClass();
@@ -179,8 +193,12 @@ void MenuWorker(Keeper<Worker>& w) {
 
 			actionAttribute = 0;
 			MenuAttributesW();
-			w.changeElementW(w, actionAttribute);
-
+			try {
+				w.changeElementW(w, actionAttribute);
+			}
+			catch (const std::exception& ex) {
+				std::cout << ex.what() << '\n';
+			}
 			system("pause");
 			system("cls");
 			MenuInClass();
@@ -231,11 +249,19 @@ void MenuCar(Keeper<Car>& c) {
 			break;
 		case 2:
 			system("cls");
-			val = 0;
-			std::cout << "Введите номер элемента для извлечения из очереди: ";
-			std::cin >> val;
-			std::cout << c[val];
-			c.extractElement(val);
+			try {
+				if (c.getCount() == 0) throw std::exception("В Keeper нет элементов");
+				val = 0;
+				std::cout << "Введите номер элемента для извлечения из очереди: ";
+				std::cin >> val;
+				if (val <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю");
+				if (c.getCount() < val)  throw std::exception("Такого элемента не существует");
+				std::cout << c[val];
+				c.extractElement(val);
+			}
+			catch (const std::exception& ex) {
+				std::cout << ex.what() << '\n';
+			}
 
 			system("pause");
 			system("cls");
@@ -310,7 +336,6 @@ void Menu() {
 
 			MenuCar(car);
 
-
 			system("pause");
 			system("cls");
 			MenuMain();
@@ -356,12 +381,7 @@ void Menu() {
 			MenuMain();
 			break;
 		}
-
-
 	}
-
-
-
 }
 
 
