@@ -1,12 +1,15 @@
 #pragma once
 #include <algorithm>
+#include <iostream>
+#include <fstream>
 #include "Menu.h"
+
 void MenuAttributesF();
 void MenuAttributesW();
 void MenuAttributesC();
+
 template <class T>
 class Keeper {
-
 
 private:
     template <class T>
@@ -19,6 +22,7 @@ private:
             this->value = &data;
             this->prev = prev;
         }
+
     };
 	int count;
     Element<T>* head;      //указатель на первый элемент
@@ -26,10 +30,22 @@ private:
 
 public:
 	Keeper() {
+#ifdef DEBUG
+        std::cout << "Конструктор Keeper\n";
+#endif // DEBUG	
 		count = 0;
         head = nullptr;
         help = nullptr;
 	}
+
+    ~Keeper() {
+#ifdef DEBUG
+        std::cout << "Деструктор Keeper\n";
+#endif // DEBUG	
+        for (int i = 1;i < getCount() + 1;++i) {
+            extractElement(i);
+        }
+    }
 
     T& operator[] (const int index) {
 
@@ -48,7 +64,6 @@ public:
         
     }
 
-
     void addElement(T& x) {
         if (head == nullptr) {
             head = new Element<T>(x);
@@ -63,9 +78,6 @@ public:
         }
         count++;
     }
-
-
-
 
     void extractElement(const int index) {	//метод удаления элемента по индексу
 
@@ -105,6 +117,7 @@ public:
                     c--;
                 }
             }
+            delete cur, current1;
         }
     }
     
@@ -363,9 +376,7 @@ public:
                 }
             }
         }
-
     }
-
 
     void display(Keeper<T>& k) {
         std::cout << "\nAll Element of " << typeid(T).name() << std::endl;
@@ -382,9 +393,82 @@ public:
         std::cout << "\nКоличество элементов " << typeid(T).name()<< " : " << k.getCount() << std::endl << std::endl;
     }
 
+    void fileDisplay(Keeper<Furniture>& k) {
+        std::ofstream out;          // поток для записи
+        out.open("out.txt", std::ios::out);      // открываем файл для записи
+        if (out.is_open())
+        {
+            std::cout << "yeah";
+            for (int i = 1;i < k.getCount() + 1;++i) {
+                out << "Furniture ";
+                out << i;
+                out << '\n';
+                k[i].getData(out);
+                out << '\n';
+            }
+        }
+        out.close();
+    }
+
+    void fileDisplayT(Keeper<T>& k) {
+        std::ofstream out;          // поток для записи
+        out.open("out.txt", std::ios::app);      // открываем файл для записи
+        if (out.is_open())
+        {
+            std::cout << "yeah";
+            for (int i = 1;i < k.getCount() + 1;++i) {
+                out << typeid(T).name();
+                out << i;
+                out << '\n';
+                k[i].getData(out);
+                out << '\n';
+            }
+        }
+        out.close();
+    }
+
+     void fileSetData(Keeper<Furniture>& f, Keeper<Worker>& w, Keeper<Car>& c) {
+        int v = 0;
+        Furniture* fu;
+        Worker* wo;
+        Car* ca;
+        std::ifstream in;          // поток для записи
+        in.open("in.txt");      // открываем файл для записи
+        if (in.is_open()){
+            std::cout << "yeah";
+            in >> v;
+
+            for (int i = 1;i < v + 1;++i) {
+                fu = new Furniture;
+                fu->FsetData(in);
+                f.addElement(*fu);
+                //in >> c;
+            }
+
+            in >> v;
+
+            for (int i = 1;i < v + 1;++i) {
+                wo = new Worker;
+                wo->FsetData(in);
+                w.addElement(*wo);
+                //in >> c;
+            }
+
+            in >> v;
+
+            for (int i = 1;i < v + 1;++i) {
+                ca = new Car;
+                ca->FsetData(in);
+                c.addElement(*ca);
+                //in >> c;
+            }
 
 
-   
+
+        }
+        in.close();
+    }
+
     int getCount() { return count; }
 
 };

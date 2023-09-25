@@ -1,5 +1,7 @@
 #pragma once
 #include "Factory.h"
+#include <iostream>
+#include <fstream>
 //Для работника определено: ФИО, должность, заработная плата,адрес проживания, телефон.
 class Worker : Factory {
 private:
@@ -17,22 +19,54 @@ public:
 	void setPost(std::string& a) {
 		post = a;
 	}
+
 	void setSal(int& a) {
 		salary = a;
 	}
+
 	void setAdd(std::string& a) {
 		address = a;
 	}
+
 	void setNum(std::string& a) {
 		number = a;
 	}
 
 	Worker() {
+#ifdef DEBUG
+		std::cout << "Конструктор Worker\n";
+#endif // DEBUG	
 		fio = "";
 		post = "";
 		salary = 0;
 		address = "";
 		number = "";
+	}
+
+	void getData(std::ofstream& out) override {
+		out << "fio: ";
+		out << this->fio;
+		out << '\n';
+		out << "pos: ";
+		out << this->post;
+		out << '\n';
+		out << "sal: ";
+		out << this->salary;
+		out << '\n';
+		out << "add: ";
+		out << this->address;
+		out << '\n';
+		out << "num: ";
+		out << this->number;
+		out << '\n';
+	}
+
+	void FsetData(std::ifstream& in) override {
+		in >> this->fio;
+		in >> this->post;
+		in >> this->salary;
+		in >> this->address;
+		in >> this->number;
 	}
 
 	void setData() override {
@@ -61,4 +95,5 @@ public:
 		std::cout << "add \t:\t" << work.address << '\n';
 		std::cout << "num \t:\t" << work.number << '\n';
 	}
+
 };

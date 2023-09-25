@@ -1,5 +1,7 @@
 #pragma once
 #include "Factory.h"
+#include <iostream>
+#include <fstream>
 //Для машины определено: марка, модель,гос.номер.
 class Car : Factory {
 
@@ -7,8 +9,6 @@ private:
 	std::string brand;
 	std::string model;
 	std::string snumber;
-
-
 
 public:
 
@@ -25,11 +25,32 @@ public:
 	}
 
 	Car() {
+#ifdef DEBUG
+		std::cout << "Конструктор Car\n";
+#endif // DEBUG	
 		brand = "";
 		model = "";
 		snumber = "";
 	}
-	
+
+	void getData(std::ofstream& out) override {
+		out << "bra: ";
+		out << this->brand;
+		out << '\n';
+		out << "mod: ";
+		out << this->model;
+		out << '\n';
+		out << "snu: ";
+		out << this->snumber;
+		out << '\n';
+	}
+
+	void FsetData(std::ifstream& in) {
+		in >> this->brand;
+		in >> this->model;
+		in >> this->snumber;
+	}
+
 	void setData() override {
 		std::cout << "bra: ";
 		std::cin >> this->brand;
@@ -48,4 +69,5 @@ public:
 		std::cout << "mod \t:\t" << car.model << '\n';
 		std::cout << "snu \t:\t" << car.snumber << '\n';
 	}
+
 };

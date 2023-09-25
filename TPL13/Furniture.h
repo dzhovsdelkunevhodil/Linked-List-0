@@ -1,5 +1,7 @@
 #pragma once
 #include "Factory.h"
+#include <iostream>
+#include <fstream>
 
 
 struct Size {
@@ -9,8 +11,6 @@ struct Size {
 };
 
 class Furniture : Factory {
-
-
 
 private:
 	std::string type;
@@ -24,6 +24,7 @@ public:
 	void setType(std::string& a) {
 		type = a;
 	}
+
 	void setSize(int& a, int& b) {
 
 		if (b == 1) {
@@ -36,16 +37,23 @@ public:
 			size.width = a;
 		} 
 	}
+
 	void setColor(std::string a) {
 		color = a;
 	}
+
 	void setMat(std::string a) {
 		material = a;
 	}
+
 	void setCost(int a) {
 		cost = a;
 	}
+
 	Furniture() {
+#ifdef DEBUG
+		std::cout << "Конструктор Furniture\n";
+#endif // DEBUG	
 		type = "";
 		size.deep = 0;
 		size.height = 0;
@@ -53,6 +61,7 @@ public:
 		color = "";
 		material = "";
 		cost = 0;
+
 	}
 
 	Furniture(Furniture& f) {
@@ -64,7 +73,7 @@ public:
 		material = f.material;
 		cost = f.cost;
 	}
-
+	
 	friend void operator<< (std::ostream& out, Furniture& furn) {
 		std::cout << "Furniture\n";
 		std::cout << "typ \t:\t" << furn.type << '\n';
@@ -75,6 +84,42 @@ public:
 		std::cout << "mat \t:\t" << furn.material << '\n';
 		std::cout << "cos \t:\t" << furn.cost << '\n';
 
+	}
+
+	void getData(std::ofstream& out) override {
+		out << "typ: ";
+		out << this->type;
+		out << '\n';
+		out << "dee: ";
+		out << this->size.deep;
+		out << '\n';
+		out << "hei: ";
+		out << this->size.height;
+		out << '\n';
+		out << "wid: ";
+		out << this->size.width;
+		out << '\n';
+		out << "col: ";
+		out << this->color;
+		out << '\n';
+		out << "mat: ";
+		out << this->material;
+		out << '\n';
+		out << "cos: ";
+		out << this->cost;
+		out << '\n';
+		
+	}
+
+	void FsetData(std::ifstream& in) override {
+
+		in >> this->type;
+		in >> this->size.deep;
+		in >> this->size.height;
+		in >> this->size.width;
+		in >> this->color;
+		in >> this->material;
+		in >> this->cost;
 	}
 
 
@@ -102,7 +147,29 @@ public:
 		std::cout << '\n';
 	}
 
+	std::string getType() {
+		return type;
+	}
 
+	int getDeep() {
+		return size.deep;
+	}
+
+	int getHeight() {
+		return size.height;
+	}
+
+	int getWidth() {
+		return size.width;
+	}
+
+	std::string getCol() {
+		return color;
+	}
+
+	std::string getMat() {
+		return material;
+	}
 
 	int getCost() {
 		return cost;

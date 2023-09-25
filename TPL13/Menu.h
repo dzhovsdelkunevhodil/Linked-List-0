@@ -15,6 +15,8 @@ void MenuMain() {
 	std::cout << "2 - Работа с Worker\n";
 	std::cout << "3 - Работа с Car\n";
 	std::cout << "4 - Вывести все содержимое\n";
+	std::cout << "5 - Сохранить в файл все содержимое\n";
+	std::cout << "6 - Извлечь из файла\n";
 	std::cout << "0 - Выход\n";
 	std::cout << "Ваше действие: \n";
 	std::cin >> action;
@@ -65,8 +67,6 @@ void MenuAttributesC() {
 	std::cout << "Ваш выбор: \n";
 	std::cin >> actionAttribute;
 }
-
-
 
 void MenuFurniture(Keeper<Furniture>& f) {
 
@@ -274,7 +274,6 @@ void MenuCar(Keeper<Car>& c) {
 	}
 }
 
-
 void Menu() {
 	setlocale(LC_ALL, "Russian");
 	Keeper<Furniture> fur;
@@ -322,6 +321,26 @@ void Menu() {
 			fur.display(fur);
 			wor.display(wor);
 			car.display(car);
+
+			system("pause");
+			system("cls");
+			MenuMain();
+			break;
+		case 5:
+			system("cls");
+
+			fur.fileDisplay(fur);
+			wor.fileDisplayT(wor);
+			car.fileDisplayT(car);
+
+			system("pause");
+			system("cls");
+			MenuMain();
+			break;
+		case 6:
+			system("cls");
+
+			fur.fileSetData(fur, wor, car);
 
 			system("pause");
 			system("cls");
