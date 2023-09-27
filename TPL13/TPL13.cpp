@@ -50,10 +50,8 @@ main обязана располагаться в отдельном cpp фай�
 #include "Keeper.h"
 
 int main() {
-	try {
-		Menu();
-	}
-	catch (...) {
-	}
+	
+	Menu();
+	
 	return 0;
 }
