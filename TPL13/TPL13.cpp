@@ -54,7 +54,6 @@ int main() {
 		Menu();
 	}
 	catch (...) {
-		std::cout << "ВЫ пидарас\n";
 	}
 	return 0;
 }
