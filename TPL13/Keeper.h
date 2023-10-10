@@ -22,6 +22,10 @@ private:
             this->value = &data;
             this->prev = prev;
         }
+        ~Element() {    //конструктор элемента
+            delete this->value;
+            delete this->prev;
+        }
 
     };
 	int count;
@@ -42,7 +46,8 @@ public:
 #ifdef DEBUG
         std::cout << "Деструктор Keeper\n";
 #endif // DEBUG	
-        for (int i = 1;i < getCount() + 1;++i) {
+        int b = getCount();
+        for (int i = 1;i < b + 1;++i) {
             extractElement(i);
         }
     }
