@@ -124,7 +124,7 @@ public:
                         c--;
                     }
                 }
-                delete cur, current1;
+               // delete cur, current1;
             }
        
     }
@@ -416,10 +416,12 @@ public:
         try {
            
             if (k.getCount() == 0) throw std::exception("Элементов нет\n");
+            
             std::cout << "\nAll Element of " << typeid(T).name() << std::endl;
-
+            
              
             for (int i = 1;i < k.getCount() + 1;++i) {
+                std::cout << i << "ый элемент\n";
                 std::cout << k[i];
                 std::cout << '\n';
 
