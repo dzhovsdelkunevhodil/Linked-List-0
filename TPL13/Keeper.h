@@ -478,6 +478,7 @@ public:
 
     void fileSetData(Keeper<Furniture>& f, Keeper<Worker>& w, Keeper<Car>& c) {
         int v = 0;
+        std::string str;
         Furniture* fu;
         Worker* wo;
         Car* ca;
@@ -485,8 +486,9 @@ public:
         in.open("in.txt");      // открываем файл для записи
         try {
             if (!in.is_open()) throw std::exception("Файл не открыт\n");
-                std::cout << "yeah";
-            in >> v;
+                std::cout << "yeah\n";
+                in >> str;
+                in >> v;
 
             for (int i = 1;i < v + 1;++i) {
                 fu = new Furniture;
@@ -494,7 +496,7 @@ public:
                 f.addElement(*fu);
                 //in >> c;
             }
-
+            in >> str;
             in >> v;
 
             for (int i = 1;i < v + 1;++i) {
@@ -504,7 +506,10 @@ public:
                 //in >> c;
             }
 
+            in >> str;
             in >> v;
+
+
 
             for (int i = 1;i < v + 1;++i) {
                 ca = new Car;
