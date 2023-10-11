@@ -19,7 +19,15 @@ void MenuMain() {
 	std::cout << "6 - Извлечь из файла\n";
 	std::cout << "0 - Выход\n";
 	std::cout << "Ваше действие: \n";
-	std::cin >> action;
+	//std::cin >> action;
+
+	while (!(std::cin >> action)) {
+		std::cout << "Trouble maaaann. Select comand again.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits <std::streamsize>::max(), '\n');
+		if (std::cin >> action)
+			break;
+	}
 
 }
 
@@ -31,7 +39,14 @@ void MenuInClass() {
 	std::cout << "4 - Вывести все элементы одной категории\n";
 	std::cout << "0 - Выход\n";
 	std::cout << "Ваше действие: \n";
-	std::cin >> actionF;
+	while (!(std::cin >> actionF)) {
+		std::cout << "Trouble maaaann. Select comand again.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits <std::streamsize>::max(), '\n');
+		
+		if (std::cin >> actionF)
+			break;
+	}
 }
 
 void MenuAttributesF() {
@@ -43,7 +58,14 @@ void MenuAttributesF() {
 	std::cout << "5 - Стоимость\n";
 	std::cout << "0 - Выход\n";
 	std::cout << "Ваш выбор: \n";
-	std::cin >> actionAttribute;
+	while (!(std::cin >> actionAttribute)) {
+		std::cout << "Trouble maaaann. Select comand again.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits <std::streamsize>::max(), '\n');
+		
+		if (std::cin >> actionAttribute)
+			break;
+	}
 }
 
 void MenuAttributesW() {
@@ -55,7 +77,14 @@ void MenuAttributesW() {
 	std::cout << "5 - Номер телефона\n";
 	std::cout << "0 - Выход\n";
 	std::cout << "Ваш выбор: \n";
-	std::cin >> actionAttribute;
+	while (!(std::cin >> actionAttribute)) {
+		std::cout << "Trouble maaaann. Select comand again.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits <std::streamsize>::max(), '\n');
+		
+		if (std::cin >> actionAttribute)
+			break;
+	}
 }
 
 void MenuAttributesC() {
@@ -65,7 +94,14 @@ void MenuAttributesC() {
 	std::cout << "3 - Гос. номер\n";
 	std::cout << "0 - Выход\n";
 	std::cout << "Ваш выбор: \n";
-	std::cin >> actionAttribute;
+	while (!(std::cin >> actionAttribute)) {
+		std::cout << "Trouble maaaann. Select comand again.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits <std::streamsize>::max(), '\n');
+		
+		if (std::cin >> actionAttribute)
+			break;
+	}
 }
 
 void MenuFurniture(Keeper<Furniture>& f) {
@@ -155,6 +191,7 @@ void MenuWorker(Keeper<Worker>& w) {
 	MenuInClass();
 
 	while (actionF != 0) {
+		//MenuInClass();
 
 		switch (actionF) {
 		case 1:
@@ -311,6 +348,7 @@ void Menu() {
 	MenuMain();
 
 	while (action != 0) {
+		//MenuMain();
 
 		switch (action) {
 		case 1:
@@ -383,7 +421,4 @@ void Menu() {
 		}
 	}
 }
-
-
-
 

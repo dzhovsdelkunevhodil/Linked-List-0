@@ -24,7 +24,7 @@ private:
         }
         ~Element() {    //конструктор элемента
             delete this->value;
-            delete this->prev;
+            //delete this->prev;
         }
 
     };
@@ -238,8 +238,7 @@ public:
             std::cout << "Выберите адекватный номер элемента для редактирования: ";
             std::cin >> ind;
         }
-        std::cout << "Выберите номер элемента для редактирования: ";
-        std::cin >> ind;
+        
         std::string valuestr = "";
         int value = 0;
         int b = 0;
@@ -340,8 +339,7 @@ public:
             std::cout << "Выберите адекватный номер элемента для редактирования: ";
             std::cin >> ind;
         }
-        std::cout << "Выберите номер элемента для редактирования: ";
-        std::cin >> ind;
+     
         std::string valuestr = "";
         while (a != 0) {
             switch (a) {

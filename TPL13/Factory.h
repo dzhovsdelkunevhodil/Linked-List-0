@@ -14,7 +14,4 @@ public:
 		std::cout << "Деструктор Factory\n";
 #endif // DEBUG	
 	};
-
-private:
-	
 };
