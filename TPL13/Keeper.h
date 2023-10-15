@@ -24,7 +24,7 @@ private:
         }
         ~Element() {    //конструктор элемента
             delete this->value;
-            //delete this->prev;
+            delete this->prev;
         }
 
     };
@@ -46,10 +46,12 @@ public:
 #ifdef DEBUG
         std::cout << "Деструктор Keeper\n";
 #endif // DEBUG	
-        int b = getCount();
-        for (int i = 1;i < b + 1;++i) {
-            extractElement(i);
+        while (head != nullptr) {
+            help = head;
+            head = head->prev;
+            delete help;
         }
+        delete head;
     }
     int getCount() { return count; }
 
@@ -85,48 +87,47 @@ public:
         count++;
     }
 
-    void extractElement(const int index) {	//метод удаления элемента по индексу
-       
-           
-            if (getCount() == 1) {	//если в очереди один элемент
-                delete this->head;	//удаляем голову, счетчик=0, пишем соощение
-                count--;
-                //std::cout << "Очередь полностью извлечена" << std::endl;
-            }
-            else if (index == getCount()) {	//если удаляется последний элемент
-                Element<T>* cur = this->head;	//временный указатель на голову
-                head = head->prev;	//передвигаем голову
-                delete cur;			//удаляем временный, вместе со старой головой
-                count--;	//убавляем на один элемент
-            }
-            else {		//если не последний, и в очереди >одного элемента
-                Element<T>* cur = this->head;		//первый временный
-                Element<T>* current1 = this->head;		//второй временный
-                int c = getCount();	//количество элементов
-                bool flag = 0;	//флаг для прекращения
-                while (flag != 1) {
-                    if (c == index) {		//если дошли до нужного элемента
-                        int r = getCount();
-                        while (r != (c + 1)) {
-                            current1 = current1->prev;	//передвигаем второй на один позже первого временного
-                            r--;
-                        }
-                        Element<T>* temp = cur;//указатель на удаляемый элемент		
-                        cur = cur->prev;				//настраиваем указатели
-                        current1->prev = cur;		//без удаляемого
-                        delete temp;
-                        flag = 1;	//прекращение работы
-                        count--;	//убавляем элемент
+    void extractElement(const int index) {	//
 
+        if (getCount() == 1) {	//1 elem = head
+            delete this->head;
+            count--;
+
+        }
+        else if (index == getCount()) {	//last
+            Element* cur = this->head;
+            head = head->prev;
+            delete cur;
+            count--;
+        }
+        else {		//not last and >1 elem
+            Element* cur = this->head;
+            Element* current1 = this->head;
+            int c = getCount();
+            bool flag = 0;
+            while (flag != 1) {
+                if (c == index) {
+                    int r = getCount();
+                    while (r != (c + 1)) {
+                        current1 = current1->prev;
+                        r--;
                     }
-                    else {	//если не дошли до нужного элемента
-                        cur = cur->prev;	//	двигаемся по очереди
-                        c--;
-                    }
+                    Element* temp = cur;
+                    cur = cur->prev;
+                    current1->prev = cur;
+                    delete temp->prev;
+                    delete temp;
+                    flag = 1;
+                    count--;
+
                 }
-               // delete cur, current1;
+                else {
+                    cur = cur->prev;
+                    c--;
+                }
             }
-       
+            delete cur, current1;
+        }
     }
     
     void changeElementW(Keeper<Worker>& w, int& a) {
@@ -404,9 +405,9 @@ public:
             for (int j = 1;j < k.getCount();++j) {
 
                 if ((k[j].getCost()) > (k[j + 1].getCost())){
-                    Furniture b = k[j]; // создали дополнительную переменную
-                    k[j] = k[j + 1]; // меняем местами
-                    k[j + 1] = b; // значения элементов
+                    Furniture b = k[j]; 
+                    k[j] = k[j + 1]; 
+                    k[j + 1] = b; 
                 }
             }
         }
