@@ -1,10 +1,13 @@
-cmake_minimum_required(VERSION 3.26.4)
 
+cmake_minimum_required(VERSION 3.26.4)
 
 project(TPL13)
 
+set {SOURSES
+	TPL13.cpp
+}
 
-set { Headers
+set{Headers
 	Factory.h
 	Furniture.h
 	Car.h
@@ -13,8 +16,6 @@ set { Headers
 	Menu.h
 }
 
+add_executable(TPL13 ${SOURSES})
 
-
-add_executable(TPL13 TPL13.cpp)
-
-target_sources(TPL13 PRIVATE ${Headers})
+target_sourses(TPL13 ${Headers})
