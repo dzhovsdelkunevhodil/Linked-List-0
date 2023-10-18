@@ -46,6 +46,5 @@
     <Text Include="in.txt">
       <Filter>Файлы заголовков</Filter>
     </Text>
-    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>

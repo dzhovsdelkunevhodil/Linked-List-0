@@ -150,7 +150,6 @@
     <ClInclude Include="Worker.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="CMakeLists.txt" />
     <Text Include="in.txt" />
     <Text Include="out.txt" />
   </ItemGroup>
