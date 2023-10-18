@@ -24,7 +24,7 @@ private:
         }
         ~Element() {    //конструктор элемента
             delete this->value;
-            delete this->prev;
+            
         }
 
     };
@@ -46,13 +46,16 @@ public:
 #ifdef DEBUG
         std::cout << "Деструктор Keeper\n";
 #endif // DEBUG	
-        while (head != nullptr) {
+        while (head != nullptr && count != 0) {
             help = head;
             head = head->prev;
             delete help;
+            count--;
         }
         delete head;
     }
+
+
     int getCount() { return count; }
 
     T& operator[] (const int index) {
@@ -91,18 +94,18 @@ public:
 
         if (getCount() == 1) {	//1 elem = head
             delete this->head;
+            head = nullptr;
             count--;
-
         }
         else if (index == getCount()) {	//last
-            Element* cur = this->head;
+            Element<T>* cur = this->head;
             head = head->prev;
             delete cur;
             count--;
         }
         else {		//not last and >1 elem
-            Element* cur = this->head;
-            Element* current1 = this->head;
+            Element<T>* cur = this->head;
+            Element<T>* current1 = this->head;
             int c = getCount();
             bool flag = 0;
             while (flag != 1) {
@@ -112,10 +115,9 @@ public:
                         current1 = current1->prev;
                         r--;
                     }
-                    Element* temp = cur;
+                    Element<T>* temp = cur;
                     cur = cur->prev;
                     current1->prev = cur;
-                    delete temp->prev;
                     delete temp;
                     flag = 1;
                     count--;
@@ -126,7 +128,6 @@ public:
                     c--;
                 }
             }
-            delete cur, current1;
         }
     }
     

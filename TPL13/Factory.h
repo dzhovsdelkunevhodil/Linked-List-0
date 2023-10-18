@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-//#define DEBUG
+#define DEBUG
 class Factory {		//абстрактный базовый класс
 public:
 	

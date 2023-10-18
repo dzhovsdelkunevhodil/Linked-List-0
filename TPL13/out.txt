@@ -1,40 +1,9 @@
 Furniture 1
-typ: 3
-dee: 4
-hei: 5
-wid: 6
-col: 7
-mat: 8
-cos: 9
-
-Furniture 2
-typ: 10
-dee: 11
-hei: 12
-wid: 13
-col: 14
-mat: 15
-cos: 16
-
-class Worker1
-fio: 9
-pos: 9
-sal: 9
-add: 9
-num: 9
-
-class Car1
-bra: 777
-mod: 777
-snu: 777
-
-class Car2
-bra: 123
-mod: 123
-snu: 123
-
-class Car3
-bra: 567
-mod: 567
-snu: 567
+typ: 1
+dee: 1
+hei: 11
+wid: 11
+col: 1
+mat: 1
+cos: 1
 
