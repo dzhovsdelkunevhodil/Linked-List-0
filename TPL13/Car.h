@@ -26,7 +26,7 @@ public:
 
 	Car() {
 #ifdef DEBUG
-		std::cout << "Конструктор Car\n";
+		std::cout << "Constructor Car\n";
 #endif // DEBUG	
 		brand = "";
 		model = "";

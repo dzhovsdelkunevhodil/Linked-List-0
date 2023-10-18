@@ -1,4 +1,3 @@
-furniture
 2
 
 3
@@ -17,7 +16,6 @@ furniture
 15
 16
 
-worker
 1
 
 9
@@ -26,7 +24,6 @@ worker
 9
 9
 
-car
 5
 
 777

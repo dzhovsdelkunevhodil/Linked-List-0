@@ -2,7 +2,7 @@
 #include "Factory.h"
 #include <iostream>
 #include <fstream>
-//Для работника определено: ФИО, должность, заработная плата,адрес проживания, телефон.
+
 class Worker : Factory {
 private:
 	std::string fio;
@@ -34,7 +34,7 @@ public:
 
 	Worker() {
 #ifdef DEBUG
-		std::cout << "Конструктор Worker\n";
+		std::cout << "Constructor Worker\n";
 #endif // DEBUG	
 		fio = "";
 		post = "";

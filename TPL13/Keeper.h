@@ -35,7 +35,7 @@ private:
 public:
 	Keeper() {
 #ifdef DEBUG
-        std::cout << "Конструктор Keeper\n";
+        std::cout << "Constructor Keeper\n";
 #endif // DEBUG	
 		count = 0;
         head = nullptr;
@@ -44,7 +44,7 @@ public:
 
     ~Keeper() {
 #ifdef DEBUG
-        std::cout << "Деструктор Keeper\n";
+        std::cout << "Destructor Keeper\n";
 #endif // DEBUG	
         while (head != nullptr && count != 0) {
             help = head;
@@ -134,13 +134,13 @@ public:
     void changeElementW(Keeper<Worker>& w, int& a) {
         int ind = 0;
         try {
-            std::cout << "Выберите номер элемента для редактирования: ";
+            std::cout << "Index of element to edit: ";
             std::cin >> ind;
-            if (ind <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю\n");
+            if (ind <= 0) throw std::exception("Index of element cannot <0 or =0\n");
         }
         catch (const std::exception& ex) {
             std::cout << ex.what()<<'\n';
-            std::cout << "Выберите адекватный номер элемента для редактирования: ";
+            std::cout << "Index of element to edit: ";
             std::cin >> ind;
         }
         std::string valuestr = "";
@@ -152,7 +152,7 @@ public:
 
                 std::cout << w[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 w[ind].setFIO(valuestr);
 
@@ -165,7 +165,7 @@ public:
 
                 std::cout << w[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 w[ind].setPost(valuestr);
 
@@ -179,7 +179,7 @@ public:
 
                 std::cout << w[ind];
                 value = 0;
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> value;
                 w[ind].setSal(value);
 
@@ -192,7 +192,7 @@ public:
 
                 std::cout << w[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 w[ind].setAdd(valuestr);
 
@@ -205,7 +205,7 @@ public:
 
                 std::cout << w[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 w[ind].setNum(valuestr);
 
@@ -231,13 +231,13 @@ public:
     void changeElementF(Keeper<Furniture>& k, int& a) {
         int ind = 0;
         try {
-            std::cout << "Выберите номер элемента для редактирования: ";
+            std::cout << "Index of element to edit: ";
             std::cin >> ind;
-            if (ind <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю\n");
+            if (ind <= 0) throw std::exception("Index of element cannot <0 or =0\n");
         }
         catch (const std::exception& ex) {
             std::cout << ex.what() << '\n';
-            std::cout << "Выберите адекватный номер элемента для редактирования: ";
+            std::cout << "Index of element to edit: ";
             std::cin >> ind;
         }
         
@@ -251,7 +251,7 @@ public:
 
                 std::cout << k[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 k[ind].setType(valuestr);
 
@@ -264,9 +264,9 @@ public:
 
                 std::cout << k[ind];
                 value = 0;
-                std::cout << "Какой размер хотите изменить \n1 - Глубина\n2 - Высота\n3 - Ширина\n Выбор: ";
+                std::cout << "What size to edit \n1 - deep\n2 - height\n3 - width\n Choice: ";
                 std::cin >> b;
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> value;
                 k[ind].setSize(value, b);
 
@@ -280,7 +280,7 @@ public:
 
                 std::cout << k[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 k[ind].setColor(valuestr);
 
@@ -293,7 +293,7 @@ public:
 
                 std::cout << k[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 k[ind].setMat(valuestr);
 
@@ -306,7 +306,7 @@ public:
 
                 std::cout << k[ind];
                 value = 0;
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> value;
                 k[ind].setCost(value);
 
@@ -332,13 +332,13 @@ public:
     void changeElementC(Keeper<Car>& c, int& a) {
         int ind = 0;
         try {
-            std::cout << "Выберите номер элемента для редактирования: ";
+            std::cout << "Index of element to edit: ";
             std::cin >> ind;
-            if (ind <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю\n");
+            if (ind <= 0) throw std::exception("Index of element cannot <0 or =0\n");
         }
         catch (const std::exception& ex) {
             std::cout << ex.what() << '\n';
-            std::cout << "Выберите адекватный номер элемента для редактирования: ";
+            std::cout << "Index of element to edit: ";
             std::cin >> ind;
         }
      
@@ -350,7 +350,7 @@ public:
 
                 std::cout << c[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 c[ind].setBrand(valuestr);
 
@@ -363,7 +363,7 @@ public:
 
                 std::cout << c[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 c[ind].setModel(valuestr);
 
@@ -377,7 +377,7 @@ public:
 
                 std::cout << c[ind];
                 valuestr = "";
-                std::cout << "Введите значение: ";
+                std::cout << "value: ";
                 std::cin >> valuestr;
                 c[ind].setSnum(valuestr);
 
@@ -417,18 +417,18 @@ public:
     void display(Keeper<T>& k) {
         try {
            
-            if (k.getCount() == 0) throw std::exception("Элементов нет\n");
+            if (k.getCount() == 0) throw std::exception("Keeper is empty\n");
             
             std::cout << "\nAll Element of " << typeid(T).name() << std::endl;
             
              
             for (int i = 1;i < k.getCount() + 1;++i) {
-                std::cout << i << "ый элемент\n";
+                std::cout << i << "--Element\n";
                 std::cout << k[i];
                 std::cout << '\n';
 
             }
-            std::cout << "\nКоличество элементов " << typeid(T).name() << " : " << k.getCount() << std::endl << std::endl;
+            std::cout << "\nCount " << typeid(T).name() << " : " << k.getCount() << std::endl << std::endl;
         }
         catch (const std::exception& ex) {
 
@@ -441,7 +441,7 @@ public:
         out.open("out.txt", std::ios::out);      // открываем файл для записи
        
         try {
-            if (!out.is_open()) throw std::exception("Файл не открыт\n");
+            if (!out.is_open()) throw std::exception("File don't open\n");
             
                 std::cout << "yeah";
                 for (int i = 1;i < k.getCount() + 1;++i) {
@@ -463,7 +463,7 @@ public:
         std::ofstream out;          // поток для записи
         out.open("out.txt", std::ios::app);      // открываем файл для записи
         try {
-            if (!out.is_open()) throw std::exception("Файл не открыт\n");
+            if (!out.is_open()) throw std::exception("File don't open\n");
 
                 std::cout << "yeah";
             for (int i = 1;i < k.getCount() + 1;++i) {
@@ -489,7 +489,7 @@ public:
         std::ifstream in;          // поток для записи
         in.open("in.txt");      // открываем файл для записи
         try {
-            if (!in.is_open()) throw std::exception("Файл не открыт\n");
+            if (!in.is_open()) throw std::exception("File don't open\n");
                 std::cout << "yeah\n";
                 in >> str;
                 in >> v;

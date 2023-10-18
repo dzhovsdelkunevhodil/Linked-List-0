@@ -10,15 +10,15 @@ int actionAttribute;
 
 void MenuMain() {
 
-	std::cout << "Выберите действие\n";
-	std::cout << "1 - Работа с Furniture\n";
-	std::cout << "2 - Работа с Worker\n";
-	std::cout << "3 - Работа с Car\n";
-	std::cout << "4 - Вывести все содержимое\n";
-	std::cout << "5 - Сохранить в файл все содержимое\n";
-	std::cout << "6 - Извлечь из файла\n";
-	std::cout << "0 - Выход\n";
-	std::cout << "Ваше действие: \n";
+	std::cout << "Select command\n";
+	std::cout << "1 - Working with Furniture\n";
+	std::cout << "2 - Working with Worker\n";
+	std::cout << "3 - Working with Car\n";
+	std::cout << "4 - Display all\n";
+	std::cout << "5 - Save to file\n";
+	std::cout << "6 - Extract from file\n";
+	std::cout << "0 - Exit\n";
+	std::cout << "Your choice: \n";
 	//std::cin >> action;
 
 	while (!(std::cin >> action)) {
@@ -32,13 +32,13 @@ void MenuMain() {
 }
 
 void MenuInClass() {
-	std::cout << "Выберите действие\n";
-	std::cout << "1 - Добавление элемента\n";
-	std::cout << "2 - Удаление элемента\n";
-	std::cout << "3 - Редактирование элемента\n";
-	std::cout << "4 - Вывести все элементы одной категории\n";
-	std::cout << "0 - Выход\n";
-	std::cout << "Ваше действие: \n";
+	std::cout << "Select command\n";
+	std::cout << "1 - Add element\n";
+	std::cout << "2 - Delete Element\n";
+	std::cout << "3 - Edit Element\n";
+	std::cout << "4 - Display category\n";
+	std::cout << "0 - Exit\n";
+	std::cout << "Your choice: \n";
 	while (!(std::cin >> actionF)) {
 		std::cout << "Trouble maaaann. Select comand again.\n";
 		std::cin.clear();
@@ -50,14 +50,14 @@ void MenuInClass() {
 }
 
 void MenuAttributesF() {
-	std::cout << "Выберите что хотите изменить\n";
-	std::cout << "1 - Тип мебели\n";
-	std::cout << "2 - Размеры\n";
-	std::cout << "3 - Цвет\n";
-	std::cout << "4 - Материал\n";
-	std::cout << "5 - Стоимость\n";
-	std::cout << "0 - Выход\n";
-	std::cout << "Ваш выбор: \n";
+	std::cout << "Select attributes to change\n";
+	std::cout << "1 - type\n";
+	std::cout << "2 - size\n";
+	std::cout << "3 - color\n";
+	std::cout << "4 - material\n";
+	std::cout << "5 - cost\n";
+	std::cout << "0 - Exit\n";
+	std::cout << "Your choice: \n";
 	while (!(std::cin >> actionAttribute)) {
 		std::cout << "Trouble maaaann. Select comand again.\n";
 		std::cin.clear();
@@ -69,14 +69,14 @@ void MenuAttributesF() {
 }
 
 void MenuAttributesW() {
-	std::cout << "Выберите что хотите изменить\n";
-	std::cout << "1 - ФИО\n";
-	std::cout << "2 - Должность\n";
-	std::cout << "3 - Зар. плата\n";
-	std::cout << "4 - Адрес\n";
-	std::cout << "5 - Номер телефона\n";
-	std::cout << "0 - Выход\n";
-	std::cout << "Ваш выбор: \n";
+	std::cout << "Select attributes to change\n";
+	std::cout << "1 - FIO\n";
+	std::cout << "2 - post\n";
+	std::cout << "3 - salary\n";
+	std::cout << "4 - address\n";
+	std::cout << "5 - number\n";
+	std::cout << "0 - Exit\n";
+	std::cout << "Your choice: \n";
 	while (!(std::cin >> actionAttribute)) {
 		std::cout << "Trouble maaaann. Select comand again.\n";
 		std::cin.clear();
@@ -88,12 +88,12 @@ void MenuAttributesW() {
 }
 
 void MenuAttributesC() {
-	std::cout << "Выберите что хотите изменить\n";
-	std::cout << "1 - Марка\n";
-	std::cout << "2 - Модель\n";
-	std::cout << "3 - Гос. номер\n";
-	std::cout << "0 - Выход\n";
-	std::cout << "Ваш выбор: \n";
+	std::cout << "Select attributes to change\n";
+	std::cout << "1 - mark\n";
+	std::cout << "2 - model\n";
+	std::cout << "3 - snumber\n";
+	std::cout << "0 - Exit\n";
+	std::cout << "Your choice: \n";
 	while (!(std::cin >> actionAttribute)) {
 		std::cout << "Trouble maaaann. Select comand again.\n";
 		std::cin.clear();
@@ -130,13 +130,13 @@ void MenuFurniture(Keeper<Furniture>& f) {
 			system("cls");
 
 			try {
-				if (f.getCount() == 0) throw std::exception("В Keeper нет элементов");
+				if (f.getCount() == 0) throw std::exception("Keeper is empty\n");
 				
 				val = 0;
-				std::cout << "Введите номер элемента для извлечения из очереди: ";
+				std::cout << "Index of element to delete: ";
 				std::cin >> val;
-				if (val <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю");
-				if (f.getCount() < val)  throw std::exception("Такого элемента не существует");
+				if (val <= 0) throw std::exception("Index of element cannot <0 or =0\n");
+				if (f.getCount() < val)  throw std::exception("This element don't exist\n");
 				std::cout << f[val];
 				f.extractElement(val);
 			}
@@ -209,12 +209,13 @@ void MenuWorker(Keeper<Worker>& w) {
 		case 2:
 			system("cls");
 			try {
-				if (w.getCount() == 0) throw std::exception("В Keeper нет элементов");
+				if (w.getCount() == 0) throw std::exception("Keeper is empty\n");
+
 				val = 0;
-				std::cout << "Введите номер элемента для извлечения из очереди: ";
+				std::cout << "Index of element to delete: ";
 				std::cin >> val;
-				if (val <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю");
-				if (w.getCount() < val )  throw std::exception("Такого элемента не существует");
+				if (val <= 0) throw std::exception("Index of element cannot <0 or =0\n");
+				if (w.getCount() < val)  throw std::exception("This element don't exist\n");
 				std::cout << w[val];
 				w.extractElement(val);
 			}
@@ -287,12 +288,13 @@ void MenuCar(Keeper<Car>& c) {
 		case 2:
 			system("cls");
 			try {
-				if (c.getCount() == 0) throw std::exception("В Keeper нет элементов");
+				if (c.getCount() == 0) throw std::exception("Keeper is empty\n");
+
 				val = 0;
-				std::cout << "Введите номер элемента для извлечения из очереди: ";
+				std::cout << "Index of element to delete: ";
 				std::cin >> val;
-				if (val <= 0) throw std::exception("Номер элемента не может быть отрицательным или равным нулю");
-				if (c.getCount() < val)  throw std::exception("Такого элемента не существует");
+				if (val <= 0) throw std::exception("Index of element cannot <0 or =0\n");
+				if (c.getCount() < val)  throw std::exception("This element don't exist\n");
 				std::cout << c[val];
 				c.extractElement(val);
 			}

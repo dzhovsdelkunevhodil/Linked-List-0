@@ -52,7 +52,7 @@ public:
 
 	Furniture() {
 #ifdef DEBUG
-		std::cout << "Конструктор Furniture\n";
+		std::cout << "Constructor Furniture\n";
 #endif // DEBUG	
 		type = "";
 		size.deep = 0;

@@ -11,7 +11,7 @@ public:
 
 	virtual ~Factory() {
 #ifdef DEBUG
-		std::cout << "Деструктор Factory\n";
+		std::cout << "Destructor Factory\n";
 #endif // DEBUG	
 	};
 };
